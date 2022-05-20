@@ -1,16 +1,14 @@
-def quick_sort(A, p: int, r: int):
-	if p < r:
-		q = partition(A, p, r)	 # 분할
-		quick_sort(A, p, q-1)	 # 왼쪽 부분 리스트 정렬
-		quick_sort(A, q+1, r)	 # 오른쪽 부분 리스트 정렬
-
-
-def partition(A, p: int, r: int) -> int:
-	x = A[r]					# x: 기준 원소
-	i = p-1					# i: 1구역의 끝 지점
-	for j in range(p, r):  # j: 3구역의 시작 지점
-		if A[j] < x:
-			i += 1
-			A[i], A[j] = A[j], A[i]  # 교환
-	A[i+1], A[r] = A[r], A[i+1]	   # 기준 원소와 2구역 첫 원소 교환
-	return i+1
+def quick_sort(arr):
+  if len(arr) <= 1:
+      return arr
+  pivot = arr[len(arr) // 2]
+  lesser_arr, equal_arr, greater_arr = [], [], []
+  for num in arr:
+    app_cnt += 1
+    if num < pivot:
+      lesser_arr.append(num)
+    elif num > pivot:
+      greater_arr.append(num)
+    else:
+      equal_arr.append(num)
+  return quick_sort(lesser_arr) + equal_arr + quick_sort(greater_arr)

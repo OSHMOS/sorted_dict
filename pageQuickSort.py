@@ -1,22 +1,17 @@
-from quickSort import *
-from itertools import islice
-
 def do_sort(input_file):
-    data_file = open(input_file)
-    A = []
-    dct = {}
-    for line in data_file.readlines():
-        lpn = line.split()[0]
-        A.append(lpn)
-        if lpn in dct:
-            dct[lpn] +=1
-        else:
-            dct[lpn] =1
-
-    value = [dict.values()]
-    quick_sort( value , 0 , len(dct)-1 )
-    islice(dct.items(),10)
-    print(dct.items())
+  data_file = open(input_file)
+  arr = []
+  dict = {}
+  for line in data_file.readlines():
+    lpn = line.split()[0]
+    arr.append(lpn)
+    if lpn in dict:
+      dict[lpn] += 1
+    else:
+      dict[lpn] = 1
+  sorted_dict = sorted(dict.items(), key = lambda item: item[1])
+  for i in range(1, 10):
+    print(list(sorted_dict[-i]))
 
 if __name__ == "__main__":
-    do_sort("C:/Users/User/OneDrive/바탕 화면/list/week11/linkbench_short.trc")
+    do_sort("/Users/oseunghyeon/Desktop/--main/linkbench_short.trc")
